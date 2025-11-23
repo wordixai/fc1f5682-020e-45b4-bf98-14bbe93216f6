@@ -9,62 +9,40 @@ The @apply directive should not be used with the group utility class.
 
 @layer base {
   :root {
-    /* Professional Business Color Palette */
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    /* Sci-Fi Color Palette */
+    --background: 220 30% 5%;
+    --foreground: 210 100% 98%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 30% 5%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 280 100% 60%;
+    --secondary-foreground: 210 100% 98%;
 
-    --accent: 210 40% 92%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 160 100% 50%;
+    --accent-foreground: 220 30% 5%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 210 20% 60%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 220 25% 8%;
+    --card-foreground: 210 100% 98%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --border: 200 50% 30%;
+    --input: 220 25% 12%;
+    --ring: 200 100% 50%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Business specific colors */
-    --business-dark: 222 47% 11%;
-    --business-blue: 221 83% 53%;
-    --business-light: 210 40% 98%;
-    --business-gray: 215 16% 47%;
-  }
-
-  .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    /* Sci-Fi specific colors */
+    --neon-blue: 200 100% 50%;
+    --neon-purple: 280 100% 60%;
+    --neon-cyan: 180 100% 50%;
+    --neon-pink: 320 100% 60%;
+    --glass-bg: 220 25% 10%;
   }
 
   * {
@@ -74,5 +52,70 @@ The @apply directive should not be used with the group utility class.
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background: linear-gradient(135deg, hsl(220 30% 5%) 0%, hsl(230 35% 8%) 50%, hsl(220 30% 5%) 100%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.5),
+                0 0 40px rgba(0, 200, 255, 0.3),
+                0 0 60px rgba(0, 200, 255, 0.1);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px rgba(0, 200, 255, 0.8),
+                 0 0 20px rgba(0, 200, 255, 0.6),
+                 0 0 30px rgba(0, 200, 255, 0.4);
+  }
+
+  .hologram {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 200, 255, 0.1) 0%,
+      rgba(160, 0, 255, 0.1) 50%,
+      rgba(0, 255, 200, 0.1) 100%
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes rotate-3d {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 200, 255, 0.5); }
+    50% { box-shadow: 0 0 40px rgba(0, 200, 255, 0.8), 0 0 60px rgba(0, 200, 255, 0.6); }
+  }
+
+  @keyframes scan-line {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-rotate-3d {
+    animation: rotate-3d 20s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
   }
 }

@@ -23,54 +23,61 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-6 lg:px-8 py-16 lg:py-20">
+    <footer className="relative bg-gradient-to-b from-background to-muted border-t border-primary/30">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+      <div className="container mx-auto px-6 lg:px-8 py-16 lg:py-20 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">企业品牌</h3>
-            <p className="text-background/80 mb-6 leading-relaxed">
+            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              NEXUS
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
               致力于为企业提供专业的解决方案，以创新技术和卓越服务，助力企业实现数字化转型。
             </p>
 
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-background/80">
-                <Mail size={18} />
-                <span>contact@company.com</span>
+              <div className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors group">
+                <Mail size={18} className="group-hover:text-primary" />
+                <span>contact@nexus.com</span>
               </div>
-              <div className="flex items-center gap-3 text-background/80">
-                <Phone size={18} />
+              <div className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors group">
+                <Phone size={18} className="group-hover:text-primary" />
                 <span>+86 400-888-8888</span>
               </div>
-              <div className="flex items-center gap-3 text-background/80">
-                <MapPin size={18} />
+              <div className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors group">
+                <MapPin size={18} className="group-hover:text-primary" />
                 <span>北京市朝阳区商务中心区</span>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="flex gap-4 mt-6">
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors">
-                <Linkedin size={20} />
+              <a href="#" className="relative w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:border-primary/50 transition-all group">
+                <Linkedin size={20} className="relative z-10 text-foreground group-hover:text-primary transition-colors" />
+                <div className="absolute inset-0 bg-primary/20 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors">
-                <Twitter size={20} />
+              <a href="#" className="relative w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:border-primary/50 transition-all group">
+                <Twitter size={20} className="relative z-10 text-foreground group-hover:text-primary transition-colors" />
+                <div className="absolute inset-0 bg-primary/20 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors">
-                <Facebook size={20} />
+              <a href="#" className="relative w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:border-primary/50 transition-all group">
+                <Facebook size={20} className="relative z-10 text-foreground group-hover:text-primary transition-colors" />
+                <div className="absolute inset-0 bg-primary/20 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-opacity" />
               </a>
             </div>
           </div>
 
           {/* Company Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-lg">公司</h4>
+            <h4 className="font-semibold mb-4 text-lg text-foreground">公司</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-background/80 hover:text-background transition-colors">
+                  <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors relative group">
                     {link.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
                   </a>
                 </li>
               ))}
@@ -79,12 +86,13 @@ const Footer = () => {
 
           {/* Services Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-lg">服务</h4>
+            <h4 className="font-semibold mb-4 text-lg text-foreground">服务</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-background/80 hover:text-background transition-colors">
+                  <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors relative group">
                     {link.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
                   </a>
                 </li>
               ))}
@@ -93,12 +101,13 @@ const Footer = () => {
 
           {/* Resources Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-lg">资源</h4>
+            <h4 className="font-semibold mb-4 text-lg text-foreground">资源</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-background/80 hover:text-background transition-colors">
+                  <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors relative group">
                     {link.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all" />
                   </a>
                 </li>
               ))}
@@ -107,19 +116,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-background/20">
+        <div className="pt-8 border-t border-primary/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/60 text-sm">
-              © 2024 企业品牌. 保留所有权利.
+            <p className="text-muted-foreground text-sm">
+              © 2024 NEXUS. 保留所有权利.
             </p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 隐私政策
               </a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 服务条款
               </a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 Cookie政策
               </a>
             </div>

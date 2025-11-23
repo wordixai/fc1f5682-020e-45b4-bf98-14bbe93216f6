@@ -1,4 +1,5 @@
 import { Star, Quote } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Testimonials = () => {
   const testimonials = [
@@ -29,75 +30,120 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 lg:py-32 bg-background">
-      <div className="container mx-auto px-6 lg:px-8">
+    <section id="testimonials" className="relative py-20 lg:py-32 overflow-hidden">
+      {/* Background grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,200,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,200,255,0.05)_1px,transparent_1px)] bg-[size:100px_100px]" />
+
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6">
-            客户评价
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-secondary via-primary to-accent bg-clip-text text-transparent">
+              客户评价
+            </span>
           </h2>
           <p className="text-lg text-muted-foreground">
             听听我们的客户怎么说，他们的成功就是我们的荣誉
           </p>
-        </div>
+        </motion.div>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-shadow duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -10 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group relative"
             >
-              {/* Quote Icon */}
-              <div className="mb-6">
-                <Quote className="text-primary/20" size={40} />
-              </div>
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
 
-              {/* Rating */}
-              <div className="flex gap-1 mb-6">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="text-primary fill-primary" size={18} />
-                ))}
-              </div>
+              <div className="relative glass-effect rounded-xl p-8 border border-primary/30 group-hover:border-primary/50 transition-all duration-300">
+                {/* Quote Icon with glow */}
+                <div className="mb-6 relative">
+                  <div className="absolute inset-0 bg-primary/30 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <Quote className="relative text-primary/40 group-hover:text-primary/60 transition-colors" size={40} />
+                </div>
 
-              {/* Content */}
-              <p className="text-foreground mb-8 leading-relaxed">
-                "{testimonial.content}"
-              </p>
+                {/* Rating */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ delay: index * 0.1 + i * 0.05 }}
+                      viewport={{ once: true }}
+                    >
+                      <Star className="text-primary fill-primary" size={18} />
+                    </motion.div>
+                  ))}
+                </div>
 
-              {/* Author */}
-              <div className="flex items-center gap-4 pt-6 border-t border-border">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <div className="font-semibold text-foreground">
-                    {testimonial.name}
+                {/* Content */}
+                <p className="text-foreground mb-8 leading-relaxed">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-6 border-t border-primary/30">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/50 rounded-full blur-md" />
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="relative w-12 h-12 rounded-full object-cover border-2 border-primary/50"
+                    />
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonial.position} · {testimonial.company}
+                  <div>
+                    <div className="font-semibold text-foreground">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {testimonial.position} · {testimonial.company}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Trust Badges */}
-        <div className="mt-20 border-t border-border pt-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-20 pt-12"
+        >
           <p className="text-center text-muted-foreground mb-8">
             受到行业领先企业的信赖
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-            {['Microsoft', 'Amazon', 'Google', 'Apple', 'Meta', 'IBM'].map((company) => (
-              <div key={company} className="text-2xl font-bold text-muted-foreground">
+          <div className="flex flex-wrap justify-center items-center gap-12">
+            {['Microsoft', 'Amazon', 'Google', 'Apple', 'Meta', 'IBM'].map((company, index) => (
+              <motion.div
+                key={company}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent opacity-40 hover:opacity-100 transition-opacity"
+              >
                 {company}
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,0 +1,35 @@
+{
+  "installMethod": "unknown",
+  "autoUpdates": true,
+  "cachedStatsigGates": {
+    "tengu_disable_bypass_permissions_mode": false,
+    "tengu_tool_pear": false,
+    "tengu_web_tasks": true,
+    "tengu_glob_with_rg": false
+  },
+  "firstStartTime": "2025-11-23T12:54:32.125Z",
+  "userID": "538d61aada0b9b78d19701ee48bccffcc7f56d452f0b30b1b6d02555e23b6c71",
+  "sonnet45MigrationComplete": true,
+  "projects": {
+    "/app": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "I don't see any file data provided in your message. Could you please share:",
+        "",
+        "1. The list of files modified by the user (with modification counts)",
+        "2. The list of files modified by other users (with modification counts)",
+        "",
+        "Once you provide this information, I'll analyze the git history and return exactly five filenames that represent core application logic, ensuring they're diverse and span different directories."
+      ],
+      "exampleFilesGeneratedAt": 1763902474372
+    }
+  }
+}
